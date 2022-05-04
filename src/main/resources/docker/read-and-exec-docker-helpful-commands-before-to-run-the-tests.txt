@@ -1,0 +1,13 @@
+######
+#Redis
+######
+
+# To connect to Redisearch instance to run commands, please run:
+$ docker exec -it redisearch_c /bin/bash 
+$ redis-cli
+
+# add test data
+$ HSET wine:0 id 0 num 0 country "Test" description "test" designation "test" points 0 price 0.0 province "test" region1 "test" region2 "test" variety "test" winery "test" flag 0
+
+# create the index
+$ FT.CREATE idx:wine on hash prefix 1 "wine:" SCHEMA id NUMERIC flag NUMERIC country TAG CASESENSITIVE points TAG CASESENSITIVE sortable price TAG CASESENSITIVE sortable 

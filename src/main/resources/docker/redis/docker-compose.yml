@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  redis:
+    container_name: redisearch_c
+    image: redislabs/redisearch:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis:/data
