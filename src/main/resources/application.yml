@@ -22,10 +22,10 @@ commons:
     # Execution type possible values: 
     #   what: elasticsearch, mongodb, cassandra, postgres, ksqldb
     #   mode: inserts, search, updates, deletes
-    one: {what: '${spring.profiles.active}', mode: deletes, time-in-ms: 60000}  
+    one: {what: '${spring.profiles.active}', mode: inserts, time-in-ms: 1000}  
     crud:
-      - {what: '${spring.profiles.active}', mode: inserts, time-in-ms: 10000} 
-      - {what: '${spring.profiles.active}', mode: search, time-in-ms: 10000} 
-      - {what: '${spring.profiles.active}', mode: updates, time-in-ms: 10000}
-      - {what: '${spring.profiles.active}', mode: deletes, time-in-ms: 10000}
+      - {what: '${spring.profiles.active}', mode: inserts, time-in-ms: 1800000} 
+      - {what: '${spring.profiles.active}', mode: search, time-in-ms: 300000} 
+      - {what: '${spring.profiles.active}', mode: updates, time-in-ms: 60000}
+      - {what: '${spring.profiles.active}', mode: deletes, time-in-ms: 60000}
 

@@ -19,7 +19,9 @@ redis:
        percentage: 15, # this is the percentage of executions of this query among all executed queries
        params: [
                  {param1: Bulgaria},{param1: Romania},{param1: Greece},{param1: Macedonia},{param1: Turkey},{param1: Germany},{param1: France},{param1: Italy},{param1: Austria},{param1: Spain},{param1: Portugal},{param1: Argentina}
-               ]
+               ],
+       offset: 0, # the first result to show, zero based indexing
+       limit: 10000 # how many results we want to show
       } # predefined parameter values, one of them randomly will be picked up and pass to the query above
     - {
        name: findByPoints,
@@ -27,7 +29,9 @@ redis:
        percentage: 15,
        params: [
                  {param1: 91},{param1: 92},{param1: 93},{param1: 94},{param1: 95},{param1: 96},{param1: 97},{param1: 98},{param1: 99},{param1: 100}
-               ]
+               ],
+       offset: 0,
+       limit: 10000
       }
     - {
        name: findByPrice,
@@ -35,7 +39,9 @@ redis:
        percentage: 15,
        params: [
                  {param1: 30.0},{param1: 31.0},{param1: 32.0},{param1: 33.0},{param1: 34.0},{param1: 35.0},{param1: 36.0},{param1: 37.0},{param1: 38.0},{param1: 33.0},{param1: 100.0},{param1: 200.0},{param1: 500.0},{param1: 1000.0},{param1: 2000.0}
-               ]
+               ],
+       offset: 0,
+       limit: 10000
       }
     - {
        name: findByCountryAndPoints,
@@ -57,7 +63,9 @@ redis:
                  {param1: Australia, param2: 96},{param1: Australia, param2: 97},{param1: Australia, param2: 98},{param1: Australia, param2: 99},{param1: Australia, param2: 100},
                  {param1: Chile, param2: 96},{param1: Chile, param2: 97},{param1: Chile, param2: 98},{param1: Chile, param2: 99},{param1: Chile, param2: 100},
                  {param1: Serbia, param2: 96},{param1: Serbia, param2: 97},{param1: Serbia, param2: 98},{param1: Serbia, param2: 99},{param1: Serbia, param2: 100}
-               ]
+               ],
+       offset: 0,
+       limit: 10000
       }
     - {
        name: findByCountryAndPrice,
@@ -79,7 +87,9 @@ redis:
                  {param1: Australia, param2: 5.0},{param1: Australia, param2: 10.0},{param1: Australia, param2: 11.0},{param1: Australia, param2: 15.0},{param1: Australia, param2: 25.0},
                  {param1: Chile, param2: 5.0},{param1: Chile, param2: 10.0},{param1: Chile, param2: 11.0},{param1: Chile, param2: 15.0},{param1: Chile, param2: 25.0},
                  {param1: Serbia, param2: 5.0},{param1: Serbia, param2: 10.0},{param1: Serbia, param2: 11.0},{param1: Serbia, param2: 15.0},{param1: Serbia, param2: 25.0}               
-              ]
+              ],
+       offset: 0,
+       limit: 10000
       }
   # list of com.akg.imdbperfcheck.config.pojo.Query objects used for the UPDATE queries
   update-queries:
@@ -148,7 +158,7 @@ redis:
                  {param1: Italy},{param1: Slovenia},{param1: Serbia},{param1: Bulgaria},{param1: Romania},{param1: Greece},{param1: Macedonia},{param1: Turkey},{param1: Germany},{param1: France},{param1: Italy},{param1: Austria},{param1: Spain},{param1: Portugal},{param1: Argentina}
                ], # predefined parameter values, one of them randomly will be picked up and pass to the query above
         offset: 0, # the first result to show, zero based indexing
-        limit: 100000 # how many results we want to show
+        limit: 10000 # how many results we want to show
       }
     - {
        name: deleteByPoints,
@@ -158,7 +168,7 @@ redis:
                  {param1: 74},{param1: 75},{param1: 76},{param1: 77},{param1: 78},{param1: 79},{param1: 80},{param1: 81},{param1: 82},{param1: 83},{param1: 84},{param1: 85},{param1: 86},{param1: 87},{param1: 88},{param1: 89},{param1: 90}
                ],
        offset: 0,
-       limit: 100000
+       limit: 10000
       }
     - {
        name: deleteByPrice,
@@ -168,5 +178,5 @@ redis:
                  {param1: 15.0},{param1: 16.0},{param1: 17.0},{param1: 18.0},{param1: 19.0},{param1: 20.0},{param1: 21.0},{param1: 22.0},{param1: 23.0},{param1: 24.0},{param1: 25.0},{param1: 26.0},{param1: 27.0},{param1: 28.0},{param1: 29.0},{param1: 30.0}
                ],
        offset: 0,
-       limit: 100000
+       limit: 10000
       }
