@@ -11,3 +11,13 @@ $ HSET wine:0 id 0 num 0 country "Test" description "test" designation "test" po
 
 # create the index
 $ FT.CREATE idx:wine on hash prefix 1 "wine:" SCHEMA id NUMERIC flag NUMERIC country TAG CASESENSITIVE points TAG CASESENSITIVE sortable price TAG CASESENSITIVE sortable 
+
+##########
+#Hazelcast
+##########
+
+# Hazelcast server has no imdg-perf-check.jar with WineDTO pojo the result is ClassNotFoundException, for the fix you should copy jar file to Hazelcast server user-lib directory.
+$ docker cp imdg-perf-check.jar hazelcast_c:/opt/hazelcast/bin/user-lib
+
+# run hazelcast management center web tool
+$ docker run --rm -p 8080:8080 hazelcast/management-center:latest

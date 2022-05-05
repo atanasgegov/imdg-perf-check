@@ -1,6 +1,6 @@
 spring:
   profiles: # here is specified the actual DB that will be benchmarked
-    active: redis # possible values are: redis, hazelcast
+    active: hazelcast # possible values are: redis, hazelcast
 
 # the logging configuration is here
 logging:

@@ -1,9 +1,17 @@
 package com.akg.imdgperfcheck.dto;
 
+import java.io.IOException;
+import java.io.Serializable;
+
+import com.hazelcast.nio.ObjectDataInput;
+import com.hazelcast.nio.ObjectDataOutput;
+
 import lombok.Data;
 
 @Data
-public class WineDTO {
+public class WineDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private long id;
 	private int num;

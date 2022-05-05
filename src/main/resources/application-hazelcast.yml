@@ -1,6 +1,6 @@
-redis:
+hazelcast:
   host: localhost
-  port: 9200
+  port: 5701
   # list of com.akg.imdbperfcheck.config.pojo.Query objects used for the READ operations
   search-queries:
     - {
