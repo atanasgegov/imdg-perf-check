@@ -18,11 +18,13 @@ import lombok.Setter;
 @Setter
 public class HazelcastConfig extends AbstractConfig {
 
+	private String clusterName;
+	
 	@Bean
 	public HazelcastInstance getHazelcastInstance() {
 
 		ClientConfig clientConfig = new ClientConfig();
-		clientConfig.setClusterName("dev");
+		clientConfig.setClusterName(clusterName);
 		clientConfig.getNetworkConfig().addAddress(host+":"+port);
 		
 		return HazelcastClient.newHazelcastClient(clientConfig);

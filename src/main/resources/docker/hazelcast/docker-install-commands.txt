@@ -1,0 +1,5 @@
+# Create hazelcast instance, run hazelcast sql command prompt tool and run hazelcast management center
+$ docker network create hazelcast-network
+$ docker run -it --network hazelcast-network --name hazelcast_c -e HZ_CLUSTERNAME=devperf -p 5701:5701 hazelcast/hazelcast:5.0.3
+$ docker run --network hazelcast-network -it --rm hazelcast/hazelcast:5.0.3 hz-cli --targets devperf@172.22.0.2 sql
+$ docker run --network hazelcast-network -p 8080:8080 hazelcast/management-center:5.0

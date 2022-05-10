@@ -1,11 +1,12 @@
 hazelcast:
   host: localhost
   port: 5701
+  cluster-name: devperf
   # list of com.akg.imdbperfcheck.config.pojo.Query objects used for the READ operations
   search-queries:
     - {
        name: findByCountry, # name of the query
-       exec: '@country:{?1}', # actual query
+       exec: 'country = ''?1''', # actual query
        percentage: 15, # this is the percentage of executions of this query among all executed queries
        params: [
                  {param1: Bulgaria},{param1: Romania},{param1: Greece},{param1: Macedonia},{param1: Turkey},{param1: Germany},{param1: France},{param1: Italy},{param1: Austria},{param1: Spain},{param1: Portugal},{param1: Argentina}
@@ -15,7 +16,7 @@ hazelcast:
       } # predefined parameter values, one of them randomly will be picked up and pass to the query above
     - {
        name: findByPoints,
-       exec: '@points:{?1}',
+       exec: 'points = ?1',
        percentage: 15,
        params: [
                  {param1: 91},{param1: 92},{param1: 93},{param1: 94},{param1: 95},{param1: 96},{param1: 97},{param1: 98},{param1: 99},{param1: 100}
@@ -25,7 +26,7 @@ hazelcast:
       }
     - {
        name: findByPrice,
-       exec: '@price:{?1}',
+       exec: 'price = ?1',
        percentage: 15,
        params: [
                  {param1: 30.0},{param1: 31.0},{param1: 32.0},{param1: 33.0},{param1: 34.0},{param1: 35.0},{param1: 36.0},{param1: 37.0},{param1: 38.0},{param1: 33.0},{param1: 100.0},{param1: 200.0},{param1: 500.0},{param1: 1000.0},{param1: 2000.0}
@@ -35,7 +36,7 @@ hazelcast:
       }
     - {
        name: findByCountryAndPoints,
-       exec: '@country:{?1} @points:{?2}',
+       exec: 'country = ''?1'' and points = ?2',
        percentage: 25,
        params: [
                  {param1: Bulgaria, param2: 96},{param1: Bulgaria, param2: 97},{param1: Bulgaria, param2: 98},{param1: Bulgaria, param2: 99},{param1: Bulgaria, param2: 100},
@@ -59,7 +60,7 @@ hazelcast:
       }
     - {
        name: findByCountryAndPrice,
-       exec: '@country:{?1} @price:{?2}',
+       exec: 'country = ''?1'' and price = ?2',
        percentage: 30,
        params: [
                  {param1: Bulgaria, param2: 5.0},{param1: Bulgaria, param2: 10.0},{param1: Bulgaria, param2: 11.0},{param1: Bulgaria, param2: 15.0},{param1: Bulgaria, param2: 25.0},
@@ -85,7 +86,7 @@ hazelcast:
   update-queries:
     - {
         name: updatePointsByCountry, # name of the query
-        exec: '@country:{?1}', # the actual query
+        exec: 'country = ''?1''', # the actual query
         percentage: 40, # this is the percentage of executions of this query among all executed queries
         params: [
                   {param1: Bulgaria, param2: 101},{param1: Romania, param2: 96},{param1: Greece, param2: 97},{param1: Macedonia, param2: 98},{param1: Turkey, param2: 99},{param1: Germany, param2: 100},{param1: France, param2: 95},{param1: Italy, param2: 94},{param1: Austria, param2: 93},{param1: Spain, param2: 92},{param1: Portugal, param2: 91},{param1: Argentina, param2: 90}
@@ -96,7 +97,7 @@ hazelcast:
       } # in this example the result from 'additional-exec' is pass to the actual update query in 'exec'
     - {
         name: updatePricesByCountry,
-        exec: '@country:{?1}',
+        exec: 'country = ''?1''',
         percentage: 15, 
         params: [
                   {param1: Bulgaria, param2: 15.0},{param1: Romania, param2: 15.0},{param1: Greece, param2: 15.0},{param1: Macedonia, param2: 15.0},{param1: Turkey, param2: 15.0},{param1: Germany, param2: 15.0},{param1: France, param2: 15.0},{param1: Italy, param2: 15.0},{param1: Austria, param2: 15.0},{param1: Spain, param2: 15.0},{param1: Portugal, param2: 15.0},{param1: Argentina, param2: 15.0}
@@ -107,7 +108,7 @@ hazelcast:
       }
     - {
         name: updatePointsByPrice,
-        exec: '@price:{?1}',
+        exec: 'price = ?1',
         percentage: 15,
         params: [
                   {param1: 15.0, param2: 91},{param1: 16.0, param2: 92},{param1: 17.0, param2: 93},{param1: 18.0, param2: 94},{param1: 19.0, param2: 95},{param1: 20.0, param2: 96},{param1: 21.0, param2: 97},{param1: 22.0, param2: 98},{param1: 23.0, param2: 99},{param1: 24.0, param2: 100},{param1: 24.0, param2: 101}
@@ -118,7 +119,7 @@ hazelcast:
       }
     - {
         name: updatePricesByPoints,
-        exec: '@points:{?1}',
+        exec: 'points = ?1',
         percentage: 15,
         params: [
                   {param1: 91, param2: 21.0},{param1: 92, param2: 20.0},{param1: 93, param2: 19.0},{param1: 94, param2: 18.0},{param1: 95, param2: 17.0},{param1: 96, param2: 16.0},{param1: 97, param2: 32.0},{param1: 98, param2: 86.0},{param1: 99, param2: 94.0},{param1: 100, param2: 15.0},{param1: 101, param2: 95.0}
@@ -129,7 +130,7 @@ hazelcast:
       }  
     - {
         name: updateCountryByPoints,
-        exec: '@points:{?1}',
+        exec: 'points = ?1',
         percentage: 15,
         params: [
                   {param1: 91, param2: Bulgaria},{param1: 92, param2: Romania},{param1: 93, param2: Greece},{param1: 94, param2: Macedonia},{param1: 95, param2: Turkey},{param1: 96, param2: Germany},{param1: 97, param2: France},{param1: 98, param2: Italy},{param1: 99, param2: Austria},{param1: 100, param2: Spain},{param1: 101, param2: Portugal}
@@ -142,7 +143,7 @@ hazelcast:
   delete-queries:
     - {
        name: deleteByCountry, # name of the query
-       exec: '@country:{?1}', # the actual query
+       exec: 'country = ''?1''', # the actual query
        percentage: 30,
        params: [
                  {param1: Italy},{param1: Slovenia},{param1: Serbia},{param1: Bulgaria},{param1: Romania},{param1: Greece},{param1: Macedonia},{param1: Turkey},{param1: Germany},{param1: France},{param1: Italy},{param1: Austria},{param1: Spain},{param1: Portugal},{param1: Argentina}
@@ -152,7 +153,7 @@ hazelcast:
       }
     - {
        name: deleteByPoints,
-       exec: '@points:{?1}',
+       exec: 'points = ?1',
        percentage: 30,
        params: [
                  {param1: 74},{param1: 75},{param1: 76},{param1: 77},{param1: 78},{param1: 79},{param1: 80},{param1: 81},{param1: 82},{param1: 83},{param1: 84},{param1: 85},{param1: 86},{param1: 87},{param1: 88},{param1: 89},{param1: 90}
@@ -162,7 +163,7 @@ hazelcast:
       }
     - {
        name: deleteByPrice,
-       exec: '@price:{?1}',
+       exec: 'price = ?1',
        percentage: 40,
        params: [
                  {param1: 15.0},{param1: 16.0},{param1: 17.0},{param1: 18.0},{param1: 19.0},{param1: 20.0},{param1: 21.0},{param1: 22.0},{param1: 23.0},{param1: 24.0},{param1: 25.0},{param1: 26.0},{param1: 27.0},{param1: 28.0},{param1: 29.0},{param1: 30.0}

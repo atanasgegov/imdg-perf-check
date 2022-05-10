@@ -18,6 +18,3 @@ $ FT.CREATE idx:wine on hash prefix 1 "wine:" SCHEMA id NUMERIC flag NUMERIC cou
 
 # Hazelcast server has no imdg-perf-check.jar with WineDTO pojo the result is ClassNotFoundException, for the fix you should copy jar file to Hazelcast server user-lib directory.
 $ docker cp imdg-perf-check.jar hazelcast_c:/opt/hazelcast/bin/user-lib
-
-# run hazelcast management center web tool
-$ docker run --rm -p 8080:8080 hazelcast/management-center:latest
