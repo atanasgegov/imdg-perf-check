@@ -5,7 +5,7 @@ Run via IDE Just run java class as Java Application -> com.akg.imdgperfcheck.ser
 Build with maven and Run the jar file.
 1. Go to the project home directory and run
   mvn clean install
-2. Copy/Paste imdgperfcheck-0.0.1-SNAPSHOT.jar and src/main/resources directory contents without docker directory where you want, for example let be directory TEST.
+2. Copy/Paste imdgperfcheck-0.0.1-SNAPSHOT.jar and src/main/resources directory contents without docker directory where you want, for example let be directory **TEST**.
   Example how test directory will look like:
   ```
   ...
