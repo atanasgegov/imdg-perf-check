@@ -1,6 +1,6 @@
-How to run the application:
+How to run and setup the application:
 
-Run via IDE Just run java class as Java Application -> com.akg.imdgperfcheck.service.ImdgPerfCheckApplication.java
+Run via IDE Just run java class as Java Application -> **com.akg.imdgperfcheck.service.ImdgPerfCheckApplication.java**
 
 Build with maven and Run the jar file.
 1. Go to the project home directory and run  
@@ -16,7 +16,7 @@ Build with maven and Run the jar file.
          |_imdgperfcheck-0.0.1-SNAPSHOT.jar
          |_winemag-data_first150k.csv
   ```
-3. Go to TEST directory open application.yaml file and set the proper values for the properties ( input-data-file, use-cases, etc.
+3. Go to just created and setuped **TEST** directory open application.yaml file and set the proper values for the properties ( input-data-file, use-cases, etc.
   Example snippets of application.yaml:
   ```
       spring:
