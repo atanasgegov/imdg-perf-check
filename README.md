@@ -3,8 +3,8 @@ How to run the application:
 Run via IDE Just run java class as Java Application -> com.akg.imdgperfcheck.service.ImdgPerfCheckApplication.java
 
 Build with maven and Run the jar file.
-1. Go to the project home directory and run
-  mvn clean install
+1. Go to the project home directory and run  
+  **mvn clean install**
 2. Copy/Paste imdgperfcheck-0.0.1-SNAPSHOT.jar and src/main/resources directory contents without docker directory where you want, for example let be directory **TEST**.
   Example how test directory will look like:
   ```
@@ -39,11 +39,11 @@ Build with maven and Run the jar file.
             - {what: '${spring.profiles.active}', mode: deletes, time-in-ms: 60000}
        ...
   ```
-4. Run.
-  java -jar imdgperfcheck-0.0.1-SNAPSHOT.jar -Dspring.config.location=.
+4. Run the program:  
+  **java -jar imdgperfcheck-0.0.1-SNAPSHOT.jar -Dspring.config.location=.**
 
-5. Configurations
-  The main configuration is at src/main/resources/application.yml
-Each DB has its own file for example for Reds the file is src/main/resources/application-redis.yml.
-Docker setup can be found at directory src/main/resources/docker. Each DB has its own sub-directory, for example, Hazelcast directory is src/main/resources/docker/hazelcast.
+5. Configurations  
+  The main configuration is at **src/main/resources/application.yml**  
+Each DB has its own file for example for Reds the file is **src/main/resources/application-redis.yml**.  
+Docker setup can be found at directory **src/main/resources/docker**. Each DB has its own sub-directory, for example, Hazelcast directory is **src/main/resources/docker/hazelcast**.  
 When the particular docker container is run it has to be run commands that are important for proper setup, for example, the creation of the indexes. For each DB example of such commands can be found at docker folder -> https://github.com/atanasgegov/imdg-perf-check/blob/main/src/main/resources/docker/read-and-exec-docker-helpful-commands-before-to-run-the-tests.txt
