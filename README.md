@@ -29,7 +29,7 @@ Build with maven and Run the jar file.
         ...
         use-cases:
           # Execution type possible values: 
-          #   what: elasticsearch, mongodb, cassandra, postgres, ksqldb
+          #   what: redis, hazelcast
           #   mode: inserts, search, updates, deletes
           ...
           crud:
