@@ -23,10 +23,14 @@ public class HazelcastConfig extends AbstractConfig {
 	@Bean
 	public HazelcastInstance getHazelcastInstance() {
 
-		ClientConfig clientConfig = new ClientConfig();
-		clientConfig.setClusterName(clusterName);
-		clientConfig.getNetworkConfig().addAddress(host+":"+port);
+		if( clusterName != null ) {
+			ClientConfig clientConfig = new ClientConfig();
+			clientConfig.setClusterName(clusterName);
+			clientConfig.getNetworkConfig().addAddress(host+":"+port);
+			
+			return HazelcastClient.newHazelcastClient(clientConfig);
+		}
 		
-		return HazelcastClient.newHazelcastClient(clientConfig);
+		return null;
 	}
 }

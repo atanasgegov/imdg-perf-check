@@ -25,7 +25,7 @@ import redis.clients.jedis.Jedis;
 @Slf4j
 public class RedisCommand extends AbstractCommand {
 
-	@Autowired
+	@Autowired(required=false)
 	private Client client;
 	
 	@Override

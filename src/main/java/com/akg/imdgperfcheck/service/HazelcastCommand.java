@@ -13,6 +13,8 @@ import com.akg.imdgperfcheck.config.pojo.QueryParams;
 import com.akg.imdgperfcheck.dto.WineDTO;
 import com.akg.imdgperfcheck.util.QueryUtil;
 import com.hazelcast.aggregation.Aggregators;
+import com.hazelcast.config.IndexConfig;
+import com.hazelcast.config.IndexType;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import com.hazelcast.query.Predicates;
@@ -23,14 +25,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HazelcastCommand extends AbstractCommand {
 
-	@Autowired
+	@Autowired(required=false)
 	private HazelcastInstance hazelcastInstance;
 
 	private IMap<Long, WineDTO> wineMap;
 
 	@PostConstruct
 	public void init() {
-		wineMap = hazelcastInstance.getMap( "wine" );
+		if( hazelcastInstance != null ) {
+			wineMap = hazelcastInstance.getMap( "wine" );
+			wineMap.addIndex(new IndexConfig(IndexType.HASH, "country"));
+			wineMap.addIndex(new IndexConfig(IndexType.HASH, "points"));
+			wineMap.addIndex(new IndexConfig(IndexType.HASH, "price"));
+		}
 	}
 
 	@Override
@@ -91,7 +98,9 @@ public class HazelcastCommand extends AbstractCommand {
 
 	@Override
 	public void closeResources() {
-		hazelcastInstance.shutdown();
+		if( hazelcastInstance != null ) {
+			hazelcastInstance.shutdown();
+		}
     }
 
 

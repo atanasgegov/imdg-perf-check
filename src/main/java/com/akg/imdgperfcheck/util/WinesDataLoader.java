@@ -9,10 +9,10 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.lang3.StringUtils;
 
 import com.akg.imdgperfcheck.dto.WineDTO;
 
-import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -38,8 +38,8 @@ public class WinesDataLoader {
 				wmDTO.setCountry(csvRecord.get(1));
 				wmDTO.setDescription(csvRecord.get(2));
 				wmDTO.setDesignation(csvRecord.get(3));
-				wmDTO.setPoints( StringUtil.isNullOrEmpty( csvRecord.get(4) ) ? -1 : Integer.valueOf(csvRecord.get(4)) );
-				wmDTO.setPrice( StringUtil.isNullOrEmpty( csvRecord.get(5) ) ? -1 : Float.valueOf(csvRecord.get(5)) );
+				wmDTO.setPoints( StringUtils.isEmpty( csvRecord.get(4) ) ? -1 : Integer.valueOf(csvRecord.get(4)) );
+				wmDTO.setPrice( StringUtils.isEmpty( csvRecord.get(5) ) ? -1 : Float.valueOf(csvRecord.get(5)) );
 				wmDTO.setProvince(csvRecord.get(6));
 				wmDTO.setRegion1(csvRecord.get(7));
 				wmDTO.setRegion2(csvRecord.get(8));
